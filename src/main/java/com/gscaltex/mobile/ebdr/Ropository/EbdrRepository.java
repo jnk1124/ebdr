@@ -17,8 +17,5 @@ public class EbdrRepository {
         em.persist(ebdrHeader);
     }
 
-    public List<EbdrHeader> findAll(){
-
-    }
 
 }

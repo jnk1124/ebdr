@@ -1,20 +1,22 @@
 package com.gscaltex.mobile.ebdr.domains;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(name = "TB_BDR_INFO_PROD")
-public class EbdrProduct {
+public class EbdrProduct implements Serializable{
+
     @Id
     private String B_BDRNO;
     @Id
     private String BDRNO_PRD_SEQ;
+
     private String B_DELINSTNO;
     private String B_PRODCODE;
     private String B_PRODNAME;
@@ -34,9 +36,11 @@ public class EbdrProduct {
     @ManyToOne(fetch = FetchType.LAZY)
     private EbdrHeader ebdrHeader;
 
-    @OneToOne(mappedBy = "ebdrProduct")
+    @OneToOne(mappedBy = "ebdrProduct", fetch = FetchType.LAZY)
+    /*@JoinColumns(value = {
+            @JoinColumn(name = "B_BDRNO"),
+            @JoinColumn(name = "BDRNO_SMP_SEQ")
+    })*/
     @JoinColumn(name = "BDRNO_SMP_SEQ")
     private EbdrSample ebdrSample;
-
-
 }

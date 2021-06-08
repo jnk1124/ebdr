@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(name = "TB_BDR_INFO_SAMPLE")
-public class EbdrSample {
+public class EbdrSample implements Serializable {
 
     @Id
     private String B_BDRNO;
