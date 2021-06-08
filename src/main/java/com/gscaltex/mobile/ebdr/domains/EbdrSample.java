@@ -25,6 +25,4 @@ public class EbdrSample implements Serializable {
     @Embedded
     private RegisterInfo registerInfo;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private EbdrProduct ebdrProduct;
 }

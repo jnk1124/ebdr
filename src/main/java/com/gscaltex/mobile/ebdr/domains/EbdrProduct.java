@@ -36,11 +36,10 @@ public class EbdrProduct implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     private EbdrHeader ebdrHeader;
 
-    @OneToOne(mappedBy = "ebdrProduct", fetch = FetchType.LAZY)
-    /*@JoinColumns(value = {
-            @JoinColumn(name = "B_BDRNO"),
-            @JoinColumn(name = "BDRNO_SMP_SEQ")
-    })*/
-    @JoinColumn(name = "BDRNO_SMP_SEQ")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+        @JoinColumn(name = "B_BDRNO", referencedColumnName = "B_BDRNO"),
+            @JoinColumn(name = "BDRNO_PRD_SEQ", referencedColumnName = "BDRNO_SMP_SEQ")}
+    )
     private EbdrSample ebdrSample;
 }
